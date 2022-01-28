@@ -1,4 +1,4 @@
-package ru.technicalExcellence.testDoubles.withoutMockito;
+package ru.technicalExcellence.testDoubles;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

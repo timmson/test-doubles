@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CartDAO {
 
-    List<Item> findCartItemsByClientId(Integer id);
+    List<Item> findCartItemsByClientId(Integer id) throws SQLException;
 
     void removeItemToCard(int clientId, Item item, int quantity) throws SQLException;
 

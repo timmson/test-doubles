@@ -21,11 +21,11 @@ public class ShoppingService {
 
     public void getCartItems(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ShoppingServiceException {
         final var clientId = getClientId(httpServletRequest);
-        final var items = cartDAO.findCartItemsByClientId(clientId);
 
         try {
+            final var items = cartDAO.findCartItemsByClientId(clientId);
             sendResponse(httpServletResponse, items.toString());
-        } catch (IOException e) {
+        } catch (SQLException | IOException e) {
             sendError(httpServletResponse);
             throw new ShoppingServiceException("Internal error", e);
         }
@@ -64,7 +64,7 @@ public class ShoppingService {
         }
     }
 
-    public void makeOrder(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ShoppingServiceException {
+    public void makeOrder(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ShoppingServiceException, SQLException {
         final var clientId = getClientId(httpServletRequest);
         final var items = cartDAO.findCartItemsByClientId(clientId);
         try {
